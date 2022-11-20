@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initFields();
+        //We can handle it is in alternative way by adding on the manifiest file
+        // android:configChanges="orientation|screenLayout|screenSize|layoutDirection|navigation"
         if (savedInstanceState != null) {
             seconds = savedInstanceState.getInt("seconds");
             running = savedInstanceState.getBoolean("running");
