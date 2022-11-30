@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        showToast("onCreate");
         initFields();
         //We can handle it is in alternative way by adding on the manifiest file
         // android:configChanges="orientation|screenLayout|screenSize|layoutDirection|navigation"
@@ -74,4 +76,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        showToast("onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        showToast("onStop");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        running = true;
+        showToast("onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showToast("onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+        showToast("onPause");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        showToast("onDestroy");
+    }
+
+    public void showToast(String message){
+        Toast.makeText(MainActivity.this, message + " method is called!", Toast.LENGTH_LONG).show();
+    }
+
 }
